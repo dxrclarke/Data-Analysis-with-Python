@@ -1,0 +1,64 @@
+import numpy as np
+
+def calculate(list):
+    if len(list) < 9:
+        raise ValueError("List must contain nine numbers.")
+        # you can't return a ValueError, it must be raised
+        # the error text follows it in parentheses and quotes
+    dict = {}
+    a = np.array(list).reshape(3,3)
+    axis0_mean = a.mean(axis=0).tolist()
+    axis1_mean = a.mean(axis=1).tolist()
+    flat_mean = a.mean()
+    mean_calc = [axis0_mean, axis1_mean, flat_mean]
+    
+    axis0_var = a.var(axis=0).tolist()
+    axis1_var = a.var(axis=1).tolist()
+    flat_var = a.var()
+    var_calc = [axis0_var, axis1_var, flat_var]
+    
+    axis0_sd = a.std(axis = 0).tolist()
+    axis1_sd = a.std(axis = 1).tolist()
+    flat_sd = a.std()
+    stand_dev = [axis0_sd, axis1_sd, flat_sd]
+    
+    axis0_max = a.max(axis = 0).tolist()
+    axis1_max = a.max(axis = 1).tolist()
+    flat_max = a.max()
+    max_calc = [axis0_max, axis1_max, flat_max]
+    
+    axis0_min = a.min(axis = 0).tolist()
+    axis1_min = a.min(axis = 1).tolist()
+    flat_min = a.min()
+    min_calc = [axis0_min, axis1_min, flat_min]
+    
+    axis0_sum = a.sum(axis=0).tolist()
+    axis1_sum = a.sum(axis = 1).tolist()
+    flat_sum = a.sum()
+    sum_calc = [axis0_sum, axis1_sum, flat_sum]
+    
+    
+    dict['mean'] = mean_calc
+    dict['variance'] = var_calc
+    dict['standard deviation'] = stand_dev
+    dict['max'] = max_calc
+    dict['min'] = min_calc
+    dict['sum'] = sum_calc
+
+    return dict
+
+
+ 
+calculate([0,1,2,3,4,5,6,7,8])
+
+
+    #return calculations
+
+
+# Make a 3x3 numpy array with the list
+
+# output the mean, variance, standard deviation, max, min, and sum of the ROWS, COLUMNS, and SET in the 3x3 matrix
+# # this should be a dictionary
+# input is a list with 9 digits
+# return lists, not Numpy arrays
+# if the list is not 9 elements, return ValueError with a message "List must contain nine numbers."
